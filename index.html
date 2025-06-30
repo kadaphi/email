@@ -3,14 +3,15 @@
 <head>
   <title>Open Email</title>
   <script>
-    // Get URL parameters
     const params = new URLSearchParams(window.location.search);
-    const to = params.get('to'); // raw email, not encoded
-    const subject = params.get('subject') || '';
-    const body = params.get('body') || '';
+    const to = params.get('to');
+    let subject = params.get('subject') || '';
+    let body = params.get('body') || '';
+
+    // Replace literal \n or %0A with proper CRLF for mailto
+    body = body.replace(/\\n/g, "\r\n").replace(/%0A/g, "\r\n");
 
     if (to) {
-      // Redirect to mailto: link, encode subject and body only
       window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     } else {
       document.body.textContent = "No email address provided.";
