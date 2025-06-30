@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Send Email</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get('to') || '';
+    const subject = params.get('subject') || '';
+    const body = params.get('body') || '';
+
+    const mailto = mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)};
+
+    document.getElementById('container').innerHTML = <a href="${mailto}">📧 Send Email</a>;
+  </script>
+</body>
+</html>
