@@ -3,14 +3,14 @@
 <head>
   <title>Open Email</title>
   <script>
-    // Read URL parameters
+    // Get URL parameters
     const params = new URLSearchParams(window.location.search);
-    const to = params.get('to');
+    const to = params.get('to'); // raw email, not encoded
     const subject = params.get('subject') || '';
     const body = params.get('body') || '';
 
     if (to) {
-      // Redirect immediately to mailto with encoded subject/body
+      // Redirect to mailto: link, encode subject and body only
       window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     } else {
       document.body.textContent = "No email address provided.";
