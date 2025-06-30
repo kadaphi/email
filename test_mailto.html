@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Open Email</title>
+  <meta charset="UTF-8" />
+  <title>Send Email</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    a.mailto-link {
+      display: inline-block;
+      padding: 12px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #0078d7;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-  <p>Tap the link below to open your email app:</p>
-  <a href="mailto:clinton.illustrated@gmail.com?subject=Test%20Subject&body=This%20is%20a%20test%20email%20body.">
-    📧 Open Email
-  </a>
+  <p>Tap the button below to open your email app:</p>
+  <a href="#" class="mailto-link" id="mailto-link">📧 Send Email</a>
+
+  <script>
+    function getParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name) || '';
+    }
+
+    const to = getParam('to');
+    const subject = getParam('subject');
+    const body = getParam('body');
+
+    const mailtoUrl = mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)};
+    document.getElementById('mailto-link').href = mailtoUrl;
+    document.getElementById('mailto-link').textContent = 📧 Send Email to ${to};
+  </script>
 </body>
 </html>
