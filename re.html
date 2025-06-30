@@ -9,10 +9,18 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const to = params.get('to');
-    const subject = params.get('subject');
-    const body = params.get('body');
 
-    if (to && subject && body) {
+    const subject = "Inquiry about artworks";
+    const body = `Hello,
+
+My name is Jonathan Peterson Miller; an Artwork Collector/Trader. I came across your works and was truly impressed by your unique creative vision.
+
+I'm interested in acquiring some pieces and would love to discuss details. Please get back to me at your earliest convenience.
+
+Best Regards,
+Jonathan.`;
+
+    if (to) {
       const mailto = mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)};
 
       const btn = document.createElement('a');
@@ -26,7 +34,7 @@
       document.body.innerHTML = '';  // clear Loading…
       document.body.appendChild(btn);
     } else {
-      document.body.innerHTML = '<p style="color:red;">Missing data in URL</p>';
+      document.body.innerHTML = '<p style="color:red;">Missing recipient email</p>';
     }
   </script>
 </body>
