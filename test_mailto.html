@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Email</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get('to');
+    let subject = params.get('subject') || '';
+    let body = params.get('body') || '';
+
+    // Replace literal \n or %0A with proper CRLF for mailto
+    body = body.replace(/\\n/g, "\r\n").replace(/%0A/g, "\r\n");
+
+    if (to) {
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else {
+      document.body.textContent = "No email address provided.";
+    }
+  </script>
+</head>
+<body>
+  <p>Opening your email app...</p>
+</body>
+</html>
