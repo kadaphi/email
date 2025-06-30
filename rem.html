@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Send Email</title>
+</head>
+<body>
+  <p>Loading…</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get('to');
+    const subject = params.get('subject');
+    const body = params.get('body');
+
+    if (to && subject && body) {
+      const mailto = mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)};
+      // create button
+      const btn = document.createElement('a');
+      btn.href = mailto;
+      btn.textContent = "📧 Send Email";
+      btn.style.fontSize = "20px";
+      btn.style.display = "inline-block";
+      btn.style.marginTop = "20px";
+      btn.style.textDecoration = "none";
+      // clear and add
+      document.body.innerHTML = '';
+      document.body.appendChild(btn);
+    } else {
+      document.body.innerHTML = '<p style="color:red;">Missing data in URL</p>';
+    }
+  </script>
+</body>
+</html>
