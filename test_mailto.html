@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test Mailto</title>
-  <script>
-    // Replace this with a real email you want to test
-    const to = "clinton.illustrated@gmail.com";
-    const subject = "Test Subject";
-    const body = "This is a test email body.";
-
-    // Redirect with unencoded 'to' and encoded subject/body
-    window.location.href = mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)};
-  </script>
+  <title>Open Email</title>
 </head>
 <body>
-  <p>Opening your email app...</p>
+  <p>Tap the link below to open your email app:</p>
+  <a href="mailto:clinton.illustrated@gmail.com?subject=Test%20Subject&body=This%20is%20a%20test%20email%20body.">
+    📧 Open Email
+  </a>
 </body>
 </html>
