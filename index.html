@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Email</title>
+  <script>
+    // Read URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get('to');
+    const subject = params.get('subject') || '';
+    const body = params.get('body') || '';
+
+    if (to) {
+      // Redirect immediately to mailto with encoded subject/body
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else {
+      document.body.textContent = "No email address provided.";
+    }
+  </script>
+</head>
+<body>
+  <p>Opening your email app...</p>
+</body>
+</html>
